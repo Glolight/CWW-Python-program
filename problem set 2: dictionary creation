@@ -1,13 +1,10 @@
 bio_info = {
-    "name": "Ogbu Jonah",
-    "age": 30,  
-    "location": "Makurdi",
-    "email": "okpotojonahogbu@gmail.com",
+    "name": "My name is Ayo",
+    "age": "My age is 21",  
     "skills": [
         "Python",
-        "Data Analysis",
-        "Machine Learning",
-        "Web Development",
-        "Communication"
+        "Go",
+        "Java",
+        "Javascript",
     ]
 }
