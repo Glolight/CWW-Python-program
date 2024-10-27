@@ -1,0 +1,17 @@
+todo_list = [
+        "Wake up and meditate",
+        "Exercise for 30 minutes",
+        "Have breakfast",
+        "Check emails"]
+first_acti = todo_list[0]
+print(todo_list[0])
+second_acti =todo_list[1]
+print(todo_list[1])
+third_acti =todo_list[2]
+print(todo_list[2])
+fourth_acti =todo_list[3]
+print(todo_list[3])
+
+# a list that displays of all the activities on the todolist at once
+for i in todo_list:
+  print(i)
