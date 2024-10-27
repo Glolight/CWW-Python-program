@@ -1,0 +1,13 @@
+bio_info = {
+    "name": "Ogbu Jonah",
+    "age": 30,  
+    "location": "Makurdi",
+    "email": "okpotojonahogbu@gmail.com",
+    "skills": [
+        "Python",
+        "Data Analysis",
+        "Machine Learning",
+        "Web Development",
+        "Communication"
+    ]
+}
