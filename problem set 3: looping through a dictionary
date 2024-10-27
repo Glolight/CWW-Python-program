@@ -1,0 +1,9 @@
+
+# Loop through the dictionary
+for key, value in bio_info.items():
+    if key == "skills":
+        print("Skills:")
+        for skill in value:
+            print(f"- {skill}")
+    else:
+        print(f"{key}: {value}")
