@@ -1,0 +1,113 @@
+import pandas as pd
+
+# Global dictionary to hold student data
+students_data = {}
+
+# Function to register a student and their courses
+def register_student(student_name, courses):
+    """ Registers a student and initializes their grades to 0 """
+    students_data[student_name] = {course: 0 for course in courses}
+    print(f"Student '{student_name}' registered successfully with courses: {', '.join(courses)}.")
+
+# Function to add or update a student's grade for a specific course
+def add_or_update_grade(student_name, course, grade):
+    """ Adds or updates a student's grade for a specific course """
+    if student_name in students_data:
+        if course in students_data[student_name]:
+            students_data[student_name][course] = grade
+            print(f"Grade updated for {student_name} in {course}: {grade}.")
+        else:
+            print(f"Course '{course}' not found for student '{student_name}'.")
+    else:
+        print(f"Student '{student_name}' not found.")
+
+# Function to calculate and display the average grade for each course
+def calculate_course_averages():
+    """ Calculates and prints the average grade for each course """
+    course_grades = {}
+    
+    # Gather grades for each course
+    for student_name, courses in students_data.items():
+        for course, grade in courses.items():
+            if course not in course_grades:
+                course_grades[course] = []
+            course_grades[course].append(grade)
+    
+    # Calculate and display average grades
+    for course, grades in course_grades.items():
+        avg_grade = sum(grades) / len(grades)
+        print(f"Average grade for {course}: {avg_grade:.2f}")
+
+# Function to get the highest score in a particular course
+def get_highest_score(course):
+    """ Returns the student with the highest score in a specific course """
+    highest_score = -1
+    top_student = None
+    
+    for student_name, courses in students_data.items():
+        if course in courses and courses[course] > highest_score:
+            highest_score = courses[course]
+            top_student = student_name
+            
+    if top_student:
+        print(f"Highest score in {course}: {highest_score} by {top_student}")
+    else:
+        print(f"No scores found for course '{course}'.")
+
+# Function to get the lowest score in a particular course
+def get_lowest_score(course):
+    """ Returns the student with the lowest score in a specific course """
+    lowest_score = float('inf')
+    bottom_student = None
+    
+    for student_name, courses in students_data.items():
+        if course in courses and courses[course] < lowest_score:
+            lowest_score = courses[course]
+            bottom_student = student_name
+    
+    if bottom_student:
+        print(f"Lowest score in {course}: {lowest_score} by {bottom_student}")
+    else:
+        print(f"No scores found for course '{course}'.")
+
+# Function to display all students' grades
+def display_all_student_grades():
+    """ Displays all students and their grades for each course """
+    print("\nStudent Grades:")
+    for student_name, courses in students_data.items():
+        print(f"{student_name}: {courses}")
+
+# Function to display all course averages
+def display_all_course_averages():
+    """ Displays the average grades for all courses """
+    calculate_course_averages()
+
+# Main driver code
+if __name__ == "__main__":
+    # Register students
+    register_student("Alice", ["Math", "Science", "History"])
+    register_student("Bob", ["Math", "Science", "History"])
+    register_student("Charlie", ["Math", "Science", "History"])
+    
+    # Add or update student grades
+    add_or_update_grade("Alice", "Math", 85)
+    add_or_update_grade("Bob", "Math", 92)
+    add_or_update_grade("Charlie", "Math", 78)
+    add_or_update_grade("Alice", "Science", 90)
+    add_or_update_grade("Bob", "Science", 88)
+    add_or_update_grade("Charlie", "Science", 95)
+    add_or_update_grade("Alice", "History", 70)
+    add_or_update_grade("Bob", "History", 75)
+    add_or_update_grade("Charlie", "History", 80)
+    
+    # Display all students' grades
+    display_all_student_grades()
+    
+    # Display all course averages
+    display_all_course_averages()
+    
+    # Get highest and lowest scores for a course
+    get_highest_score("Math")
+    get_lowest_score("Math")
+    get_highest_score("Science")
+    get_lowest_score("History")
